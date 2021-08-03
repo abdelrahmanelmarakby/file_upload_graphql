@@ -11,7 +11,7 @@ class HomeView extends GetView<HomeController> {
     return Scaffold(
         appBar: AppBar(
           title: Text('HomeView'),
-          centerTitle: true,
+          centerTitle: false,
         ),
         body: EditImage());
   }

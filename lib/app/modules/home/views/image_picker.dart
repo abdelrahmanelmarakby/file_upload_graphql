@@ -59,25 +59,15 @@ class _EditImageState extends State<EditImage> {
     });
   }
 
-  saveImage() async {
-    if (images.isNotEmpty) {
-      for (int i = 0; i < images.length; i++) {
-        ByteData byteData = await images[i].getByteData();
-        List<int> imageData = byteData.buffer.asUint8List();
-/////
-        http.MultipartFile multipartFile = http.MultipartFile.fromBytes(
-            'image', imageData,
-            filename: images[i].name, contentType: MediaType('image', 'jpg'));
-        imagestoEdit.add(multipartFile);
-        print(imagestoEdit.length);
-      }
-    }
-  }
+//ADD IMAGEs AND UPLOAD IT
 
   @override
   Widget build(BuildContext context) {
     return Mutation(
-      options: MutationOptions(document: gql(r"""
+      options: MutationOptions(
+
+//ADD GRAPHQL MUTATION
+          document: gql(r"""
 mutation UpdateImage($image:Upload,$id:Int!) {
   updateProperty(data: {id: $id,image:$image}) {
     image
@@ -103,6 +93,7 @@ mutation UpdateImage($image:Upload,$id:Int!) {
               ElevatedButton(
                 child: Text("Upload images"),
                 onPressed: () async {
+                  //ADD IMAGEs
                   if (images.isEmpty || images[0] != null) {
                     for (int i = 0; i < images.length; i++) {
                       ByteData byteData = await images[i].getByteData();
@@ -116,6 +107,7 @@ mutation UpdateImage($image:Upload,$id:Int!) {
                       print(imagestoEdit.length);
                     }
                   }
+                  //UPLOAD IMAGEs
                   try {
                     runMutation({"id": 95, "image": imagestoEdit[0]});
                   } catch (e) {
