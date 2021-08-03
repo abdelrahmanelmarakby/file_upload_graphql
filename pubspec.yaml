@@ -1,0 +1,23 @@
+name: file_upload_graph
+version: 1.0.0+1
+publish_to: none
+description: A new Flutter project.
+environment:
+  sdk: '>=2.12.0 <3.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  get: 4.3.4
+  graphql_flutter: ^5.0.0
+  http: ^0.13.3
+  multi_image_picker2: ^5.0.2
+  responsive_framework: ^0.1.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
